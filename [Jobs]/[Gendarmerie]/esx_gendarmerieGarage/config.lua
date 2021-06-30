@@ -175,7 +175,7 @@ Config.VehicleLoadText = "Wait for vehicle to spawn"			-- text on screen when ve
 -- Distance from garage marker to the point where /fix and /clean shall work
 Config.Distance = 20
 
-Config.DrawDistance      = 100.0
+Config.DrawDistance      = 15.0
 Config.TriggerDistance 	 = 3.0
 Config.Marker 			 = {Type = 27, r = 0, g = 127, b = 22}
 

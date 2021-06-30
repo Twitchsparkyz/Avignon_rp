@@ -136,25 +136,27 @@ local position = {
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(0)
+        Citizen.Wait(2)
+        if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'LaVague') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'LaVague') then 
+            for k in pairs(position) do
+                if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'LaVague') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'LaVague') then 
+                    DrawMarker(2, position[k].x, position[k].y, position[k].z,0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 232, 222, 0, 255, 0, 1, 2, 0, nil, nil, 0)
+                    
 
-        for k in pairs(position) do
-            if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'LaVague') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'LaVague') then 
-                DrawMarker(2, position[k].x, position[k].y, position[k].z,0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 232, 222, 0, 255, 0, 1, 2, 0, nil, nil, 0)
-				
 
 
-
-            local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
-            local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, position[k].x, position[k].y, position[k].z)
-        
-            if dist <= 1.0 then
-                ESX.ShowHelpNotification("Appuyez sur ~INPUT_TALK~ pour accéder au vestiaire")
-                if IsControlJustPressed(1,51) then
-                    RageUI.Visible(RMenu:Get('tenue', 'vLaVague'), not RageUI.Visible(RMenu:Get('tenue', 'vLaVague')))
+                local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
+                local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, position[k].x, position[k].y, position[k].z)
+            
+                    if dist <= 1.0 then
+                        ESX.ShowHelpNotification("Appuyez sur ~INPUT_TALK~ pour accéder au vestiaire")
+                        if IsControlJustPressed(1,51) then
+                            RageUI.Visible(RMenu:Get('tenue', 'vLaVague'), not RageUI.Visible(RMenu:Get('tenue', 'vLaVague')))
+                        end
+                    end
                 end
             end
+        else Citizen.Wait(1500)
         end
-    end
     end
 end)

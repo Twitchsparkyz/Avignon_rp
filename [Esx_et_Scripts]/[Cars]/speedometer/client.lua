@@ -80,6 +80,7 @@ Citizen.CreateThread(function()
 				})
 			end
 		else
+			Citizen.Wait(1500)
 			SendNUIMessage({
 				showhud = false
 			})
@@ -137,6 +138,8 @@ Citizen.CreateThread(function()
 					fuel = fuel
 				})
 			end
+		else
+			Citizen.Wait(1000)
 		end
 
 		Citizen.Wait(1)

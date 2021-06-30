@@ -1,6 +1,6 @@
 Config                        = {}
 Config.Price                  = 800
-Config.DrawDistance           = 100.0
+Config.DrawDistance           = 10.0
 Config.Size                   = { x = 1.5, y = 1.5, z = 1.0 }
 Config.Color                  = { r = 0, g = 128, b = 255 }
 Config.Type                   = 23

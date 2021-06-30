@@ -144,15 +144,15 @@ Citizen.CreateThread(function()
 				end
 
 
-    end, function()
-	end)
+        end, function()
+      end)
 
 
 
 
 		RageUI.IsVisible(RMenu:Get('LaVague', 'inter'), true, true, true, function()
 		
-local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
+    local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
 			if closestDistance ~= -1 and closestDistance <= 3.0 then
 			
 			RageUI.ButtonWithStyle("Prendre Carte d'identité", nil, {RightLabel = "→"}, true, function(Hovered, Active, Selected)
@@ -510,48 +510,42 @@ end)
 Citizen.CreateThread(function()
   while true do
     Wait(0)
-    if IsHandcuffed then
-      if IsDragged then
-        local ped = GetPlayerPed(GetPlayerFromServerId(CopPed))
-        local myped = GetPlayerPed(-1)
-        AttachEntityToEntity(myped, ped, 11816, 0.54, 0.54, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
-      else
-        DetachEntity(GetPlayerPed(-1), true, false)
+		if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'LaVague') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'LaVague') then 
+      if IsHandcuffed then
+        if IsDragged then
+          local ped = GetPlayerPed(GetPlayerFromServerId(CopPed))
+          local myped = GetPlayerPed(-1)
+          AttachEntityToEntity(myped, ped, 11816, 0.54, 0.54, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
+        else
+          DetachEntity(GetPlayerPed(-1), true, false)
+        end
       end
+    else
+      Citizen.Wait(500)
     end
   end
 end)
 
 RegisterNetEvent('esx_LaVaguejob:putInVehicle')
 AddEventHandler('esx_LaVaguejob:putInVehicle', function()
-
   local playerPed = GetPlayerPed(-1)
   local coords    = GetEntityCoords(playerPed)
-
   if IsAnyVehicleNearPoint(coords.x, coords.y, coords.z, 5.0) then
-
     local vehicle = GetClosestVehicle(coords.x,  coords.y,  coords.z,  5.0,  0,  71)
-
     if DoesEntityExist(vehicle) then
-
       local maxSeats = GetVehicleMaxNumberOfPassengers(vehicle)
       local freeSeat = nil
-
       for i=maxSeats - 1, 0, -1 do
         if IsVehicleSeatFree(vehicle,  i) then
           freeSeat = i
           break
         end
       end
-
       if freeSeat ~= nil then
         TaskWarpPedIntoVehicle(playerPed,  vehicle,  freeSeat)
       end
-
     end
-
   end
-
 end)
 
 RegisterNetEvent('esx_LaVaguejob:OutVehicle')
@@ -655,8 +649,7 @@ ESX.TriggerServerCallback('esx_LaVaguejob:getOtherPlayerData', function(data)
 
 end
 
---[[
-Citizen.CreateThread(function()
+--[[Citizen.CreateThread(function()
     local LaVaguemap = AddBlipForCoord(439.14, -982.3, 30.69)
     SetBlipSprite(LaVaguemap, 60)
     SetBlipColour(LaVaguemap, 38)
@@ -665,9 +658,7 @@ Citizen.CreateThread(function()
     BeginTextCommandSetBlipName('STRING')
     AddTextComponentString("[ETAT] Los Sntos LaVague Departement")
     EndTextCommandSetBlipName(LaVaguemap)
-end)
-
-]]
+end)]]
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -678,12 +669,13 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Citizen.Wait(2)
 		if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'LaVague') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'LaVague') then 
 	--    RegisterNetEvent('esx_LaVaguejob:onDuty')
-		if IsControlJustReleased(0 ,168) then
-			RageUI.Visible(RMenu:Get('LaVague', 'main'), not RageUI.Visible(RMenu:Get('LaVague', 'main')))
-		end
-	end
+      if IsControlJustReleased(0 ,168) then
+        RageUI.Visible(RMenu:Get('LaVague', 'main'), not RageUI.Visible(RMenu:Get('LaVague', 'main')))
+      end
+    else Citizen.Wait(1500)
+	  end
 	end
 end)

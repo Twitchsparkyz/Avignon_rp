@@ -101,9 +101,9 @@ local position = {
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
+        if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'ragrah' and ESX.PlayerData.job.grade_name == 'boss') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'ragrah' and ESX.PlayerData.job2.grade_name == 'boss') then 
 
         for k in pairs(position) do
-            if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'ragrah' and ESX.PlayerData.job.grade_name == 'boss') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'ragrah' and ESX.PlayerData.job2.grade_name == 'boss') then 
 
             local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
             local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, position[k].x, position[k].y, position[k].z)
@@ -116,8 +116,9 @@ Citizen.CreateThread(function()
                     RefreshragrahMoney()
                     RageUI.Visible(RMenu:Get('patron', 'boss'), not RageUI.Visible(RMenu:Get('patron', 'boss')))
                 end
-            end
         end
+    end
+    else Citizen.Wait(500)
     end
     end
 end)

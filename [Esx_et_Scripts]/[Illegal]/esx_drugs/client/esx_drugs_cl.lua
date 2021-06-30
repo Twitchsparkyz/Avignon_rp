@@ -393,9 +393,9 @@ end)
 Citizen.CreateThread(function()
 	while true do
 
-		Citizen.Wait(0)
+		Citizen.Wait(2)
 
-		local coords      = GetEntityCoords(GetPlayerPed(-1))
+		local coords      = GetEntityCoords(PlayerPedId())
 		local isInMarker  = false
 		local currentZone = nil
 
@@ -426,7 +426,7 @@ end)
 -- Key Controls
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(10)
+		Citizen.Wait(1)
 		if CurrentAction ~= nil then
 			SetTextComponentFormat('STRING')
 			AddTextComponentString(CurrentActionMsg)

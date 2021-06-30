@@ -187,15 +187,17 @@ Citizen.CreateThread(function()
                 local dist3 = Vdist(plyCoords3.x, plyCoords3.y, plyCoords3.z, Config.pos.garagevoiture.position.x, Config.pos.garagevoiture.position.y, Config.pos.garagevoiture.position.z)
             	local dist4 = Vdist(plyCoords3.x, plyCoords3.y, plyCoords3.z, Config.pos.garagevoiture2.position.x, Config.pos.garagevoiture2.position.y, Config.pos.garagevoiture2.position.z)
            if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' or ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then    
-            DrawMarker(2, Config.pos.garagevoiture.position.x, Config.pos.garagevoiture.position.y, Config.pos.garagevoiture.position.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 255, 0, 0, 255, 0, 1, 2, 0, nil, nil, 0)
-            DrawMarker(2, Config.pos.garagevoiture2.position.x, Config.pos.garagevoiture2.position.y, Config.pos.garagevoiture2.position.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 255, 0, 0, 255, 0, 1, 2, 0, nil, nil, 0)
+                DrawMarker(2, Config.pos.garagevoiture.position.x, Config.pos.garagevoiture.position.y, Config.pos.garagevoiture.position.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 255, 0, 0, 255, 0, 1, 2, 0, nil, nil, 0)
+                DrawMarker(2, Config.pos.garagevoiture2.position.x, Config.pos.garagevoiture2.position.y, Config.pos.garagevoiture2.position.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 255, 0, 0, 255, 0, 1, 2, 0, nil, nil, 0)
                  if dist3 <= 4.0 or dist4 <= 4.0 then    
                     ESX.ShowHelpNotification("Appuyez sur [~b~E~w~] pour accéder au garage")
                     if IsControlJustPressed(1,51) then           
                         RageUI.Visible(RMenu:Get('garagepolice', 'main'), not RageUI.Visible(RMenu:Get('garagepolice', 'main')))
                     end   
                 end
-               end 
+            else
+                Citizen.Wait(1500)
+            end 
         end
 end)
 
@@ -345,16 +347,20 @@ end
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
+        if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then 
 
-        for k in pairs(Config.pos.armurerie) do
-            if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then 
+            for k in pairs(Config.pos.armurerie) do
+                if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then 
 
-            local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
-            local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, Config.pos.armurerie[k].x, Config.pos.armurerie[k].y, Config.pos.armurerie[k].z)
-            DrawMarker(2, Config.pos.armurerie[k].x, Config.pos.armurerie[k].y, Config.pos.armurerie[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0, 0, 255, 255, 0, 1, 2, 0, nil, nil, 0)
+                local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
+                local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, Config.pos.armurerie[k].x, Config.pos.armurerie[k].y, Config.pos.armurerie[k].z)
+                DrawMarker(2, Config.pos.armurerie[k].x, Config.pos.armurerie[k].y, Config.pos.armurerie[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0, 0, 255, 255, 0, 1, 2, 0, nil, nil, 0)
 
+                end
+            end
+        else 
+            Citizen.Wait(1000)
         end
-    end
     end
 end)
 
@@ -432,16 +438,21 @@ end)
 Citizen.CreateThread(function()
         while true do
             Citizen.Wait(0)
+            if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then 	
+
                 local plyCoords2 = GetEntityCoords(GetPlayerPed(-1), false)
                 local dist2 = Vdist(plyCoords2.x, plyCoords2.y, plyCoords2.z, Config.pos.armurerie.position.x, Config.pos.armurerie.position.y, Config.pos.armurerie.position.z)
-		    if dist2 <= 1.0 then
-		    if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then 	
+		        if dist2 <= 1.0 then
+		        if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then 	
                     ESX.ShowHelpNotification("Appuyez sur [~b~E~w~] pour accéder à l'armurerie")
                     if IsControlJustPressed(1,51) then
                         RageUI.Visible(RMenu:Get('armurerielspd', 'main'), not RageUI.Visible(RMenu:Get('armurerielspd', 'main')))
                     end   
                 end
             end 
+        else 
+            Citizen.Wait(1500)
+        end
         end
 end)
 

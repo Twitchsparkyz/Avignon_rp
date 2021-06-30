@@ -3,7 +3,7 @@ var ConfigObject = function() {
 	
 	this.MarkerInfo = {
 		MarkerType: 1,
-		DrawDistance: 100.0,
+		DrawDistance: 5.0,
 		MarkerSize: {x:1.5,y:1.5,z:1.0},
 		BlipSprite: 106,
 		EnterExitDelay:0,

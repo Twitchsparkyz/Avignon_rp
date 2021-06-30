@@ -1870,40 +1870,43 @@ Citizen.CreateThread(function()
 		'prop_boxpile_07d',
 		'hei_prop_cash_crate_half_full'
 	}
-
+	
 	while true do
 		Citizen.Wait(500)
+		if PlayerData.job and PlayerData.job.name == 'gouv' then
+			local playerPed = PlayerPedId()
+			local coords = GetEntityCoords(playerPed)
 
-		local playerPed = PlayerPedId()
-		local coords = GetEntityCoords(playerPed)
+			local closestDistance = -1
+			local closestEntity = nil
 
-		local closestDistance = -1
-		local closestEntity = nil
+			for i=1, #trackedEntities, 1 do
+				local object = GetClosestObjectOfType(coords, 3.0, GetHashKey(trackedEntities[i]), false, false, false)
 
-		for i=1, #trackedEntities, 1 do
-			local object = GetClosestObjectOfType(coords, 3.0, GetHashKey(trackedEntities[i]), false, false, false)
+				if DoesEntityExist(object) then
+					local objCoords = GetEntityCoords(object)
+					local distance = GetDistanceBetweenCoords(coords, objCoords, true)
 
-			if DoesEntityExist(object) then
-				local objCoords = GetEntityCoords(object)
-				local distance = GetDistanceBetweenCoords(coords, objCoords, true)
-
-				if closestDistance == -1 or closestDistance > distance then
-					closestDistance = distance
-					closestEntity = object
+					if closestDistance == -1 or closestDistance > distance then
+						closestDistance = distance
+						closestEntity = object
+					end
 				end
 			end
-		end
 
-		if closestDistance ~= -1 and closestDistance <= 3.0 then
-			if LastEntity ~= closestEntity then
-				TriggerEvent('nwx_gouvernement:hasEnteredEntityZone', closestEntity)
-				LastEntity = closestEntity
+			if closestDistance ~= -1 and closestDistance <= 3.0 then
+				if LastEntity ~= closestEntity then
+					TriggerEvent('nwx_gouvernement:hasEnteredEntityZone', closestEntity)
+					LastEntity = closestEntity
+				end
+			else
+				if LastEntity then
+					TriggerEvent('nwx_gouvernement:hasExitedEntityZone', LastEntity)
+					LastEntity = nil
+				end
 			end
 		else
-			if LastEntity then
-				TriggerEvent('nwx_gouvernement:hasExitedEntityZone', LastEntity)
-				LastEntity = nil
-			end
+			Citizen.Wait(5000)
 		end
 	end
 end)
@@ -1912,7 +1915,7 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(1)
-
+		if PlayerData.job and PlayerData.job.name == 'gouv' then
 		if CurrentAction then
 			ESX.ShowHelpNotification(CurrentActionMsg)
 
@@ -1980,6 +1983,8 @@ Citizen.CreateThread(function()
 
 			currentTask.busy = false
 		end
+	else Citizen.Wait(500)
+	end
 	end
 end)
 

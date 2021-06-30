@@ -1,13 +1,14 @@
 Citizen.CreateThread(function()
 	while true do
 		local allowedWeapons = {"WEAPON_KNIFE", "WEAPON_BOTTLE", "WEAPON_DAGGER", "WEAPON_HATCHET", "WEAPON_MACHETE", "WEAPON_SWITCHBLADE"}
-		local player = PlayerId()
-		local plyPed = GetPlayerPed(player)
-		local vehicle = GetClosestVehicleToPlayer()
-		local animDict = "melee@knife@streamed_core_fps"
-		local animName = "ground_attack_on_spot"
-		if vehicle ~= 0 then
+
 			if CanUseWeapon(allowedWeapons) then
+				local player = PlayerId()
+				local plyPed = GetPlayerPed(player)
+				local vehicle = GetClosestVehicleToPlayer()
+				local animDict = "melee@knife@streamed_core_fps"
+				local animName = "ground_attack_on_spot"
+				if vehicle ~= 0 then
 				local closestTire = GetClosestVehicleTire(vehicle)
 				if closestTire ~= nil then
 					
@@ -37,6 +38,8 @@ Citizen.CreateThread(function()
 						end
 					end
 				end
+			else
+				Citizen.Wait(2000)
 			end
 		end
 		Citizen.Wait(0)

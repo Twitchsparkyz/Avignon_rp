@@ -113,7 +113,8 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(10)
+		local time = 10
+		Citizen.Wait(time)
 		
 		playerPed = GetPlayerPed(-1)
 		local pos = GetEntityCoords(GetPlayerPed(-1))
@@ -166,7 +167,7 @@ Citizen.CreateThread(function()
 			end
 			
 		else
-
+			time = 500
 				
 				if started then
 					started = false
@@ -594,7 +595,10 @@ Citizen.CreateThread(function()
 				FreezeEntityPosition(LastCar, false)
 			end	
 			
-		end
+		
+		else 
+		time = 500
+	end
 		
 	end
 end)

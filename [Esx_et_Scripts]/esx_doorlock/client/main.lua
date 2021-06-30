@@ -62,7 +62,7 @@ Citizen.CreateThread(function()
 			end
 		end
 
-		Citizen.Wait(500)
+		Citizen.Wait(1000)
 	end
 end)
 
@@ -72,7 +72,7 @@ Citizen.CreateThread(function()
 		local letSleep = true
 
 		for k,v in ipairs(Config.DoorList) do
-			if v.distanceToPlayer and v.distanceToPlayer < 50 then
+			if v.distanceToPlayer and v.distanceToPlayer < 30 then
 				letSleep = false
 
 				if v.doors then
@@ -103,7 +103,7 @@ Citizen.CreateThread(function()
 		end
 
 		if letSleep then
-			Citizen.Wait(500)
+			Citizen.Wait(1500)
 		end
 	end
 end)

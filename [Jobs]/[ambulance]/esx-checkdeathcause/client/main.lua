@@ -43,8 +43,7 @@
 	  Citizen.Wait(1000)
 		while true do
 		  local sleep = 3000
-  
-		  if not IsPedInAnyVehicle(GetPlayerPed(-1)) then
+		  if not IsPedInAnyVehicle(GetPlayerPed(-1)) and (PlayerData.job.name == "ambulance" or PlayerData.job.name == "police") then
   
 			  local player, distance = ESX.Game.GetClosestPlayer()
   

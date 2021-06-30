@@ -43,7 +43,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(10)
+		Citizen.Wait(500)
 		local coords      = GetEntityCoords(GetPlayerPed(-1))
 		local isInMarker  = false
 		local currentZone = nil
@@ -55,16 +55,22 @@ Citizen.CreateThread(function()
 					ShopItems   = v.Items
 					currentZone = k
 					LastZone    = k
+				else
+					Citizen.Wait(1000)	
 				end
 			end
 		end
 		if isInMarker and not HasAlreadyEnteredMarker then
 			HasAlreadyEnteredMarker = true
 			TriggerEvent('esx_SodaMachine:hasEnteredMarker', currentZone)
+		else
+			Citizen.Wait(1000)	
 		end
 		if not isInMarker and HasAlreadyEnteredMarker then
 			HasAlreadyEnteredMarker = false
 			TriggerEvent('esx_SodaMachine:hasExitedMarker', LastZone)
+		else
+			Citizen.Wait(1000)	
 		end
 	end
 end)
@@ -86,6 +92,8 @@ Citizen.CreateThread(function()
 		
         CurrentAction = nil
       end
+	else
+		Citizen.Wait(1000)	
     end
   end
 end)

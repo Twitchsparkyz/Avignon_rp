@@ -76,9 +76,9 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 	SendNUIMessage({action = "setValue", key = "money", value = "€"..data.money})
 end)
 
-Citizen.CreateThread(function()
+--[[Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Citizen.Wait(5)
 		ESX.UI.HUD.SetDisplay(0.0)
 		if isTalking == false then
 			if NetworkIsPlayerTalking(PlayerId()) then
@@ -92,14 +92,14 @@ Citizen.CreateThread(function()
 			end
 		end
 	end
-end)
+end)]]
 
 -- Voice
 
 local prox = 10.0 -- Sets the Default Voice Distance
 local allowProximityChange = true -- Set to True to allow Changing Voice Distance | False to not allow Changing Voice Distance
 
-Citizen.CreateThread(function()
+--[[Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
 		--if IsControlJustPressed(1, 74) and allowProximityChange then
@@ -123,7 +123,7 @@ Citizen.CreateThread(function()
 			DrawMarker(1, posPlayer.x, posPlayer.y, posPlayer.z - 1, 0, 0, 0, 0, 0, 0, prox * 2, prox * 2, 0.8001, 0, 255, 255, 255, 0,0, 0,0)
 		end
 	end
-end)
+end)]]
 
 RegisterNetEvent('ui:toggle')
 AddEventHandler('ui:toggle', function(show)

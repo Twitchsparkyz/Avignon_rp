@@ -1,5 +1,5 @@
 Config                            = {}
-Config.DrawDistance               = 100.0
+Config.DrawDistance               = 10.0
 Config.MarkerColor                = { r = 255, g = 255, b = 255 }
 --language currently available EN and SV
 Config.Locale                     = 'en'

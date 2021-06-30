@@ -148,17 +148,19 @@ Citizen.CreateThread(function()
         for k in pairs(position) do
             if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'police') or (ESX.PlayerData.job and ESX.PlayerData.job.name == 'police') then 
 
-            local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
-            local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, position[k].x, position[k].y, position[k].z)
-            DrawMarker(2, position[k].x, position[k].y, position[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 255, 0, 0, 255, 0, 1, 2, 0, nil, nil, 0)
+				local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
+				local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, position[k].x, position[k].y, position[k].z)
+				DrawMarker(2, position[k].x, position[k].y, position[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 255, 0, 0, 255, 0, 1, 2, 0, nil, nil, 0)
 
-        
-            if dist <= 1.0 then
-                ESX.ShowHelpNotification("Appuyez sur ~INPUT_TALK~ pour accéder au coffre")
-                if IsControlJustPressed(1,51) then
-                    RageUI.Visible(RMenu:Get('police', 'coffre'), not RageUI.Visible(RMenu:Get('police', 'coffre')))
-                end
-            end
+			
+				if dist <= 1.0 then
+					ESX.ShowHelpNotification("Appuyez sur ~INPUT_TALK~ pour accéder au coffre")
+					if IsControlJustPressed(1,51) then
+						RageUI.Visible(RMenu:Get('police', 'coffre'), not RageUI.Visible(RMenu:Get('police', 'coffre')))
+					end
+				end
+			else
+				Citizen.Wait(1000)
         end
     end
     end

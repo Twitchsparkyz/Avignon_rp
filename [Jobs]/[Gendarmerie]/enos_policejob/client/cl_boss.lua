@@ -99,18 +99,20 @@ Citizen.CreateThread(function()
         for k in pairs(position) do
             if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' and ESX.PlayerData.job.grade_name == 'boss' then 
 
-            local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
-            local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, position[k].x, position[k].y, position[k].z)
-            DrawMarker(2, 462.2, -985.63, 31.00, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0, 0, 255, 255, 0, 1, 2, 0, nil, nil, 0)
+                local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
+                local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, position[k].x, position[k].y, position[k].z)
+                DrawMarker(2, 462.2, -985.63, 31.00, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 0, 0, 255, 255, 0, 1, 2, 0, nil, nil, 0)
 
-        
-            if dist <= 1.0 then
-                ESX.ShowHelpNotification("Appuyez sur ~INPUT_TALK~ pour accéder au Actions Patron")
-                if IsControlJustPressed(1,51) then
-                    RefreshpoliceMoney()
-                    RageUI.Visible(RMenu:Get('patron', 'boss'), not RageUI.Visible(RMenu:Get('patron', 'boss')))
+            
+                if dist <= 1.0 then
+                    ESX.ShowHelpNotification("Appuyez sur ~INPUT_TALK~ pour accéder au Actions Patron")
+                    if IsControlJustPressed(1,51) then
+                        RefreshpoliceMoney()
+                        RageUI.Visible(RMenu:Get('patron', 'boss'), not RageUI.Visible(RMenu:Get('patron', 'boss')))
+                    end
                 end
-            end
+            else
+                Citizen.Wait(1000)
         end
     end
     end

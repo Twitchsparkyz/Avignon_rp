@@ -258,6 +258,7 @@ Citizen.CreateThread(function ()
         CurrentAction = nil
         GUI.Time      = GetGameTimer()
       end
+    else Citizen.Wait(500)
     end
   end
 end)
@@ -273,6 +274,8 @@ Citizen.CreateThread(function ()
       if(v.Type ~= -1 and GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < Config.DrawDistance) then
         zPos = v.Pos.z + 1.0
         DrawMarker(20, v.Pos.x, v.Pos.y, zPos, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, 3, 252, 123, 100, false, true, 2, false, false, false, false)
+      else
+        Citizen.Wait(50)
       end
     end
   end

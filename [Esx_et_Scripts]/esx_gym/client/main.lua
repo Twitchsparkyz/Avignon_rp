@@ -196,7 +196,9 @@ Citizen.CreateThread(function()
 					else
 						OpenBikeMenu()
 					end
-				end			
+				end
+			else
+				Citizen.Wait(1000)		
             end
         end
     end
@@ -216,7 +218,9 @@ Citizen.CreateThread(function()
 				
 				if IsControlJustPressed(0, Keys['E']) then
 					OpenGymMenu()
-				end			
+				end	
+			else
+				Citizen.Wait(1000)			
             end
         end
     end
@@ -261,7 +265,9 @@ Citizen.CreateThread(function()
 						
 						CheckTraining()
 					end
-				end			
+				end	
+			else
+				Citizen.Wait(1000)			
             end
         end
     end
@@ -306,7 +312,9 @@ Citizen.CreateThread(function()
 						
 						CheckTraining()
 					end
-				end			
+				end	
+			else
+				Citizen.Wait(1000)			
             end
         end
     end
@@ -351,7 +359,9 @@ Citizen.CreateThread(function()
 						
 						CheckTraining()
 					end
-				end			
+				end	
+			else
+				Citizen.Wait(1000)			
             end
         end
     end
@@ -396,7 +406,9 @@ Citizen.CreateThread(function()
 						
 						CheckTraining()
 					end
-				end			
+				end	
+			else
+				Citizen.Wait(1000)			
             end
         end
     end
@@ -441,7 +453,9 @@ Citizen.CreateThread(function()
 						
 						CheckTraining()
 					end
-				end			
+				end	
+			else
+				Citizen.Wait(1000)			
             end
         end
     end

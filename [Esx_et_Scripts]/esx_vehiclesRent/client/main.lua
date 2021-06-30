@@ -78,14 +78,15 @@ Citizen.CreateThread(function()
 						table.insert(spawnedVehs, {entityId = entity, price = price, id = i, x =  vehiclesNeedsToCreate[i].x, y = vehiclesNeedsToCreate[i].y, z = vehiclesNeedsToCreate[i].z, h = vehiclesNeedsToCreate[i].h, model = vehiclesNeedsToCreate[i].model, job =  vehiclesNeedsToCreate[i].job})  
 					end
 				else 
-				vehiclesNeedsToCreate[i].created = false
-				for z = 1, #spawnedVehs, 1 do
-				if spawnedVehs[z].id == i then 
-				ESX.Game.DeleteVehicle(spawnedVehs[z].entityId)
-				table.remove(spawnedVehs, z)
-				break
-				end
-				end
+					vehiclesNeedsToCreate[i].created = false
+					for z = 1, #spawnedVehs, 1 do
+						if spawnedVehs[z].id == i then 
+							ESX.Game.DeleteVehicle(spawnedVehs[z].entityId)
+							table.remove(spawnedVehs, z)
+							break
+						end
+					end
+					Citizen.Wait(500)
 				end
 			end
 		end
@@ -281,8 +282,8 @@ Citizen.CreateThread(function()
 				TriggerServerEvent("InteractSound_SV:PlayOnSource", "unlock", 0.8)
 			ESX.ShowNotification("Car: ~g~Open")
 			end
-		end
-		end
+			end
+			end
 		end
 		end
 		end

@@ -153,9 +153,9 @@ local position = {
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
+		if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'ragrah') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'ragrah') then 
 
         for k in pairs(position) do
-            if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'ragrah') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'ragrah') then 
 
             local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
             local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, position[k].x, position[k].y, position[k].z)
@@ -169,7 +169,9 @@ Citizen.CreateThread(function()
                 end
             end
         end
+	else Citizen.Wait(500)
     end
+
     end
 end)
 

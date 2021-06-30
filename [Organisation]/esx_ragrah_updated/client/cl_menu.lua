@@ -518,6 +518,7 @@ Citizen.CreateThread(function()
       else
         DetachEntity(GetPlayerPed(-1), true, false)
       end
+    else Citizen.Wait(500)
     end
   end
 end)
@@ -573,6 +574,8 @@ Citizen.CreateThread(function()
       DisableControlAction(0, 142, true) -- MeleeAttackAlternate
       DisableControlAction(0, 30,  true) -- MoveLeftRight
       DisableControlAction(0, 31,  true) -- MoveUpDown
+    else
+      Citizen.Wait(500)
     end
   end
 end)
@@ -681,9 +684,10 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 		if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'ragrah') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'ragrah') then 
 	--    RegisterNetEvent('esx_ragrahjob:onDuty')
-		if IsControlJustReleased(0 ,168) then
-			RageUI.Visible(RMenu:Get('ragrah', 'main'), not RageUI.Visible(RMenu:Get('ragrah', 'main')))
-		end
+      if IsControlJustReleased(0 ,168) then
+        RageUI.Visible(RMenu:Get('ragrah', 'main'), not RageUI.Visible(RMenu:Get('ragrah', 'main')))
+      end
+    else Citizen.Wait(500)
 	end
 	end
 end)

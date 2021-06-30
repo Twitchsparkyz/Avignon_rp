@@ -243,11 +243,9 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
         if Vdist2(GetEntityCoords(PlayerPedId(), false), v1) < distance then
             Draw3DText(v1.x,v1.y,v1.z, "Antonio")
+        else
+            Citizen.Wait(500)
         end
-        
-        if Vdist2(GetEntityCoords(PlayerPedId(), false), v2) < distance then
-            Draw3DText(v2.x,v2.y,v2.z, "Mange tes morts")
-		end
 	end
 end)
 

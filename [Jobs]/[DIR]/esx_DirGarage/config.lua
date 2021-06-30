@@ -310,7 +310,7 @@ Config.Distance = 20
 
 
 
-Config.DrawDistance      = 100.0
+Config.DrawDistance      = 10.0
 
 Config.TriggerDistance 	 = 3.0
 

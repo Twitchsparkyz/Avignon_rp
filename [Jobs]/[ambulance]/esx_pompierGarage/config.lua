@@ -177,7 +177,7 @@ Config.VehicleLoadText = "Attendez que votre véhicule soit livré"			-- text on
 -- Distance from garage marker to the point where /fix and /clean shall work
 Config.Distance = 20
 
-Config.DrawDistance      = 100.0
+Config.DrawDistance      = 10.0
 Config.TriggerDistance 	 = 3.0
 Config.Marker 			 = {Type = 27, r = 0, g = 127, b = 22}
 

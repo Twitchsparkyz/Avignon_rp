@@ -31,6 +31,8 @@ Citizen.CreateThread(function()
     TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
     Citizen.Wait(0)
   end
+  PlayerData = ESX.GetPlayerData()
+
 end)
 
 function IsJobTrue()
@@ -1041,7 +1043,8 @@ Citizen.CreateThread(function()
                     DrawMarker(v.Type, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, false, 2, false, false, false, false)
                 end
             end
-
+          else
+            Citizen.Wait(1000)	
         end
 
     end
@@ -1075,7 +1078,8 @@ Citizen.CreateThread(function()
                 HasAlreadyEnteredMarker = false
                 TriggerEvent('esx_nightclub:hasExitedMarker', LastZone)
             end
-
+          else
+            Citizen.Wait(1000)	
         end
 
     end
@@ -1093,7 +1097,7 @@ Citizen.CreateThread(function()
       AddTextComponentString(CurrentActionMsg)
       DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 
-      if IsControlJustReleased(0,  Keys['E']) and IsJobTrue() then
+      if IsControlJustReleased(0,  Keys['E']) and PlayerData.job.name == 'nightclub' then
 
         if CurrentAction == 'menu_cloakroom' then
             OpenCloakroomMenu()
@@ -1157,9 +1161,10 @@ Citizen.CreateThread(function()
 
         
         CurrentAction = nil
-
+      else Citizen.Wait(1000)
       end
-
+    else
+      Citizen.Wait(1000)	
     end
 
 
@@ -1183,10 +1188,14 @@ end)
 Citizen.CreateThread(function()
   while true do
     Citizen.Wait(10)
-    if hintIsShowed == true then
-      SetTextComponentFormat("STRING")
-      AddTextComponentString(hintToDisplay)
-      DisplayHelpTextFromStringLabel(0, 0, 1, -1)
+    if PlayerData.job.name == 'nightclub' then
+      if hintIsShowed == true then
+        SetTextComponentFormat("STRING")
+        AddTextComponentString(hintToDisplay)
+        DisplayHelpTextFromStringLabel(0, 0, 1, -1)
+      end
+    else 
+      Citizen.Wait(1000)
     end
   end
 end)
@@ -1196,7 +1205,7 @@ Citizen.CreateThread(function()
   while true do
     Citizen.Wait(10)
 
-    if IsJobTrue() then
+    if PlayerData.job.name == 'nightclub' then
 
         local coords = GetEntityCoords(GetPlayerPed(-1))
         for k,v in pairs(Config.TeleportZones) do
@@ -1204,7 +1213,8 @@ Citizen.CreateThread(function()
             DrawMarker(v.Marker, v.Pos.x, v.Pos.y, v.Pos.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, v.Size.x, v.Size.y, v.Size.z, v.Color.r, v.Color.g, v.Color.b, 100, false, true, 2, false, false, false, false)
           end
         end
-
+		else
+				Citizen.Wait(1000)	
     end
 
   end
@@ -1214,12 +1224,12 @@ end)
 Citizen.CreateThread(function()
   while true do
     Citizen.Wait(10)
-    local coords      = GetEntityCoords(GetPlayerPed(-1))
-    local position    = nil
-    local zone        = nil
 
-    if IsJobTrue() then
 
+    if PlayerData.job.name == 'nightclub' then
+      local coords      = GetEntityCoords(GetPlayerPed(-1))
+      local position    = nil
+      local zone        = nil
         for k,v in pairs(Config.TeleportZones) do
           if(GetDistanceBetweenCoords(coords, v.Pos.x, v.Pos.y, v.Pos.z, true) < v.Size.x) then
             isInPublicMarker = true
@@ -1245,7 +1255,8 @@ Citizen.CreateThread(function()
             hintIsShowed = false
           end
         end
-
+			else
+				Citizen.Wait(1000)	
     end
 
   end

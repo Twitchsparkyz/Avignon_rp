@@ -511,6 +511,9 @@ Citizen.CreateThread(function()
   while true do
     Wait(0)
     if IsHandcuffed then
+      DisableControlAction(0, 142, true) -- MeleeAttackAlternate
+      DisableControlAction(0, 30,  true) -- MoveLeftRight
+      DisableControlAction(0, 31,  true) -- MoveUpDown
       if IsDragged then
         local ped = GetPlayerPed(GetPlayerFromServerId(CopPed))
         local myped = GetPlayerPed(-1)
@@ -518,7 +521,10 @@ Citizen.CreateThread(function()
       else
         DetachEntity(GetPlayerPed(-1), true, false)
       end
+    else 
+      Citizen.Wait(500)
     end
+  
   end
 end)
 
@@ -563,18 +569,6 @@ AddEventHandler('esx_mafiaitaliennejob:OutVehicle', function(t)
   local ynew = plyPos.y+2
 
   SetEntityCoords(GetPlayerPed(-1), xnew, ynew, plyPos.z)
-end)
-
--- Handcuff
-Citizen.CreateThread(function()
-  while true do
-    Wait(0)
-    if IsHandcuffed then
-      DisableControlAction(0, 142, true) -- MeleeAttackAlternate
-      DisableControlAction(0, 30,  true) -- MoveLeftRight
-      DisableControlAction(0, 31,  true) -- MoveUpDown
-    end
-  end
 end)
 
 ----------------------------------------------- Fouiller

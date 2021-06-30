@@ -56,51 +56,7 @@ Citizen.CreateThread(function()
 					end
 					end)
 					
-					--[[
-					SetPedComponentVariation(GetPlayerPed(-1) , 8, 38, 0) --tshirt 
-                    SetPedComponentVariation(GetPlayerPed(-1) , 11, 53, 0)  --torse
-                    SetPedComponentVariation(GetPlayerPed(-1) , 3, 20, 0)  -- bras
-                    SetPedComponentVariation(GetPlayerPed(-1) , 4, 59, 0)   --pants
-                    SetPedComponentVariation(GetPlayerPed(-1) , 6, 24, 0)   --shoes
-                    SetPedComponentVariation(GetPlayerPed(-1) , 7, 1, 0)   -- chaine
-                    SetPedComponentVariation(GetPlayerPed(-1) , 5, 0, 0)   -- sac
-                    SetPedComponentVariation(GetPlayerPed(-1) , 1, 56, 1)  -- masque
-                    SetPedPropIndex(GetPlayerPed(-1), 1, 0, 0, true)       -- lunettes
-                    SetPedPropIndex(GetPlayerPed(-1), 0, 81, 0, true)      -- casque
-					]]--
-						
---0: Face\ 1: Mask\ 2: Hair\ 3: Torso\ 4: Leg\ 
---5: Parachute / bag\ 6: Shoes\ 7: Accessory\ 
---8: Undershirt\ 9: Kevlar\ 10: Badge\ 11: Torso 2
 
-
-            
---[[
-            RageUI.ButtonWithStyle("Tenue Officier 1",nil, {nil}, true, function(Hovered, Active, Selected)
-                if Selected then
-                    SetPedComponentVariation(GetPlayerPed(-1) , 8, 38, 0) --tshirt 
-                    SetPedComponentVariation(GetPlayerPed(-1) , 11, 49, 0)  --torse
-                    SetPedComponentVariation(GetPlayerPed(-1) , 3, 17, 0)  -- bras
-                    SetPedComponentVariation(GetPlayerPed(-1) , 4, 59, 0)   --pants
-                    SetPedComponentVariation(GetPlayerPed(-1) , 6, 24, 0)   --shoes
-					SetPedComponentVariation(GetPlayerPed(-1) , 0, 17, 0)   --helmet
-                end
-            end)
-			]]
-
-      --[[      RageUI.Separator("↓ ~o~Gestion GPB~s~ ↓")
-
-            RageUI.ButtonWithStyle("Mettre",nil, {nil}, true, function(Hovered, Active, Selected)
-                if Selected then
-                    SetPedComponentVariation(GetPlayerPed(-1) , 9, 1, 0)   --bulletwear
-                end
-            end)
-
-            RageUI.ButtonWithStyle("Enlever",nil, {nil}, true, function(Hovered, Active, Selected)
-                if Selected then
-                    SetPedComponentVariation(GetPlayerPed(-1) , 9, 0, 0)   --bulletwear
-                end
-            end)]]
 
         end, function()
         end, 1)
@@ -118,24 +74,27 @@ local position = {
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
+        if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'ragrah') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'ragrah') then 
 
         for k in pairs(position) do
-            if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'ragrah') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'ragrah') then 
-                DrawMarker(2, position[k].x, position[k].y, position[k].z,0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 35, 0, 78, 255, 255, 0, 1, 2, 0, nil, nil, 0)
-				
+                    DrawMarker(2, position[k].x, position[k].y, position[k].z,0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 35, 0, 78, 255, 255, 0, 1, 2, 0, nil, nil, 0)
+                    
 
 
 
-            local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
-            local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, position[k].x, position[k].y, position[k].z)
-        
-            if dist <= 1.0 then
-                ESX.ShowHelpNotification("Appuyez sur ~INPUT_TALK~ pour accéder au vestiaire")
-                if IsControlJustPressed(1,51) then
-                    RageUI.Visible(RMenu:Get('tenue', 'vragrah'), not RageUI.Visible(RMenu:Get('tenue', 'vragrah')))
+                local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
+                local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, position[k].x, position[k].y, position[k].z)
+            
+                if dist <= 1.0 then
+                    ESX.ShowHelpNotification("Appuyez sur ~INPUT_TALK~ pour accéder au vestiaire")
+                    if IsControlJustPressed(1,51) then
+                        RageUI.Visible(RMenu:Get('tenue', 'vragrah'), not RageUI.Visible(RMenu:Get('tenue', 'vragrah')))
+                    end
                 end
+
             end
+        else 
+            Citizen.Wait(500)
         end
-    end
     end
 end)

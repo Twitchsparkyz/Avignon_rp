@@ -72,23 +72,22 @@ Citizen.CreateThread(function()
     end)
 
 Citizen.CreateThread(function()
-        while true do
-            Citizen.Wait(0)
-    
-
-                local plyCoords3 = GetEntityCoords(GetPlayerPed(-1), false)
-                local dist3 = Vdist(plyCoords3.x, plyCoords3.y, plyCoords3.z, Config.pos.garagevoiture.position.x, Config.pos.garagevoiture.position.y, Config.pos.garagevoiture.position.z)
-				if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'LaVague') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'LaVague') then
-				DrawMarker(2, Config.pos.garagevoiture.position.x, Config.pos.garagevoiture.position.y, Config.pos.garagevoiture.position.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 232, 222, 0, 255, 0, 1, 2, 0, nil, nil, 0)	
-				if dist3 <= 3.0 then
-                                   
-					ESX.ShowHelpNotification("Appuyez sur [~b~E~w~] pour accéder au garage")
-                    if IsControlJustPressed(1,51) then           
-                        RageUI.Visible(RMenu:Get('garageLaVague', 'main'), not RageUI.Visible(RMenu:Get('garageLaVague', 'main')))
-                    end   
-                end
-               end 
-        end
+    while true do
+    Citizen.Wait(0)
+        if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'LaVague') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'LaVague') then
+            local plyCoords3 = GetEntityCoords(GetPlayerPed(-1), false)
+            local dist3 = Vdist(plyCoords3.x, plyCoords3.y, plyCoords3.z, Config.pos.garagevoiture.position.x, Config.pos.garagevoiture.position.y, Config.pos.garagevoiture.position.z)
+            DrawMarker(2, Config.pos.garagevoiture.position.x, Config.pos.garagevoiture.position.y, Config.pos.garagevoiture.position.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 232, 222, 0, 255, 0, 1, 2, 0, nil, nil, 0)	
+            if dist3 <= 3.0 then        
+                ESX.ShowHelpNotification("Appuyez sur [~b~E~w~] pour accéder au garage")
+                if IsControlJustPressed(1,51) then           
+                    RageUI.Visible(RMenu:Get('garageLaVague', 'main'), not RageUI.Visible(RMenu:Get('garageLaVague', 'main')))
+                end 
+            end
+        else
+            Citizen.Wait(1500) 
+        end 
+    end
 end)
 
 function spawnuniCar(car)

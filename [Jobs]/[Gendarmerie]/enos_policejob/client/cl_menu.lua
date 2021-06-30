@@ -1227,6 +1227,8 @@ Citizen.CreateThread(function()
       else
         DetachEntity(GetPlayerPed(-1), true, false)
       end
+	else 
+		Citizen.Wait(250)
     end
   end
 end)
@@ -1429,9 +1431,11 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 		if ESX.PlayerData.job and ESX.PlayerData.job.name == 'police' then 
 	--    RegisterNetEvent('esx_policejob:onDuty')
-		if IsControlJustReleased(0 ,167) then
-			RageUI.Visible(RMenu:Get('police', 'main'), not RageUI.Visible(RMenu:Get('police', 'main')))
-		end
+			if IsControlJustReleased(0 ,167) then
+				RageUI.Visible(RMenu:Get('police', 'main'), not RageUI.Visible(RMenu:Get('police', 'main')))
+			end
+		else
+			Citizen.Wait(1500)
 	end
 	end
 end)

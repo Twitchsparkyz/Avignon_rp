@@ -153,23 +153,27 @@ local position = {
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
+		if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'LaVague') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'LaVague') then
+			for k in pairs(position) do
+				if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'LaVague') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'LaVague') then 
 
-        for k in pairs(position) do
-            if (ESX.PlayerData.job and ESX.PlayerData.job.name == 'LaVague') or (ESX.PlayerData.job2 and ESX.PlayerData.job2.name == 'LaVague') then 
+				local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
+				local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, position[k].x, position[k].y, position[k].z)
+				DrawMarker(2, position[k].x, position[k].y, position[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 232, 222, 0, 255, 0, 1, 2, 0, nil, nil, 0)
 
-            local plyCoords = GetEntityCoords(GetPlayerPed(-1), false)
-            local dist = Vdist(plyCoords.x, plyCoords.y, plyCoords.z, position[k].x, position[k].y, position[k].z)
-            DrawMarker(2, position[k].x, position[k].y, position[k].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.5, 0.5, 232, 222, 0, 255, 0, 1, 2, 0, nil, nil, 0)
+			
+				if dist <= 1.0 then
+					ESX.ShowHelpNotification("Appuyez sur ~INPUT_TALK~ pour accéder au coffre")
+					if IsControlJustPressed(1,51) then
+						RageUI.Visible(RMenu:Get('LaVague', 'coffre'), not RageUI.Visible(RMenu:Get('LaVague', 'coffre')))
+					end
+				end
+			end
+		end
+		else
+			Citizen.Wait(1500)
+		end
 
-        
-            if dist <= 1.0 then
-                ESX.ShowHelpNotification("Appuyez sur ~INPUT_TALK~ pour accéder au coffre")
-                if IsControlJustPressed(1,51) then
-                    RageUI.Visible(RMenu:Get('LaVague', 'coffre'), not RageUI.Visible(RMenu:Get('LaVague', 'coffre')))
-                end
-            end
-        end
-    end
     end
 end)
 
