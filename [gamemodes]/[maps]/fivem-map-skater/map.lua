@@ -1,0 +1,1 @@
+spawnpoint 'a_m_y_skater_01' { x = -606.75, y = -126.19, z = 39.01 }

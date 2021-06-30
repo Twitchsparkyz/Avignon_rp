@@ -1,0 +1,519 @@
+@font-face {
+  font-family: SignPainter;
+  src: url('../fonts/pdown.ttf');
+}
+
+@font-face {
+  font-family: vo;
+  src: url('../fonts/bankgothic.ttf');
+}
+
+@font-face {
+  font-family: glitch;
+  src: url('../fonts/pdown.ttf');
+}
+
+.menu {
+  font-family: vo;
+  min-width  : 510px;
+  max-width  : 380px;
+  border-radius: 20px;
+  color      : #fff;
+  left       : 30;
+  top        : 80; 
+  position   : absolute;
+}
+
+.menu.align-left {
+  right: : 29;
+  top : 80; 
+}
+
+.menu.align-top-left {
+  left: 29;
+  top : 17; 
+}
+
+.menu.align-top {
+  left: 29;
+  top : 80; 
+}
+
+.menu.align-top-right {
+  left: 29;
+  top : 280; 
+}
+
+.menu.align-right {
+  left: 29;
+  top : 80; 
+}
+
+.menu.align-bottom-right {
+  left: 29;
+  top : 80; 
+}
+
+.menu.align-bottom {
+  left: 29;
+  top : 80; 
+}
+
+.menu.align-bottom-left {
+  right: 40;
+  bottom : 80; 
+}
+.menu.align-center {
+  left: 29;
+  top : 80;
+}
+
+.menu .head {
+  font-family: SignPainter;  
+  font-size: 59px;
+
+  background: linear-gradient(to left bottom,   #3A539B,  #1F3A93 );
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+.menu .head_personnage {
+  font-family: 'chalet'; 
+  font-size: 59px;
+
+  background-image: url("../img/header/personnage.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+.menu .head_tatoo {
+  font-family: 'chalet'; 
+  font-size: 59px;
+
+  background-image: url("../img/header/tatoo.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+.menu .head_dmv {
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/autoecole.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+.menu .head_garage {
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/garage.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+.menu .head_concess {
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/Concessionnaire.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+.menu .head_ems {
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/ems.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+.menu .head_identity {
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/identite.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+.menu .head_vetement {
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/suburban.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+.menu .head_lscustom {
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/lscus.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+.menu .head_vehicle {
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/vehicle.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+.menu .head_Magasin {
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/masque.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+
+.menu .head_skin {
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/skin_menu.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+.menu .head_settings{
+  font-family: 'chalet' sans-serif;
+  font-size: 59px;
+  
+  background-image: url("../img/header/settings.png");
+  text-align : center;
+  height : 108px;
+  line-height : 432px;
+  color : white;
+  font-style: oblique;
+  }
+
+  .menu .head_welcome{
+    font-family: 'chalet'; 
+    font-size: 59px;
+    
+    background-image: url("../img/header/welcome.png");   
+    text-align : center;   
+    height : 108px;    
+    line-height : 432px;  
+    color : white;
+    }
+
+.menu .head_perso {
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/menu.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+.menu .head_accesoires {
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/Accessoires.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+
+.menu .head_valider {
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/valider.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+.menu .head_Modo{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/moderation.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+
+.menu .head_meconcernant{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/Me_concernant.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+.menu .head_gps{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/gpsrapide.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+
+.menu .head_Inventaire{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/Inventaire.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+.menu .head_mask{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/masque.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+.menu .head_emploi{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/poleemploi.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+.menu .head_emploid{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/universite.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+.menu .head_superete{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/247.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+.menu .head_job{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/actions_metier.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+.menu .head_patron{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/gestionpatron.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+.menu .head_employe{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/Sans_titre-1.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+.menu .head_entreprise{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/Entreprise.png");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+
+.menu .head_ammu{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/ammunation.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+.menu .head_anim{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/animations.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+.menu .head_Factures{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/factures.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+.menu .head_metier{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/actions_metier.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+.menu .head_vestiaire{
+  font-family: 'chalet';
+  font-size: 59px;
+
+  background-image: url("../img/header/vestiaire.jpg");
+  text-align      : center;
+  height          : 90px;
+  line-height     : 105px;
+  color : white;
+  font-style: oblique;
+}
+
+.menu .categorie {
+  font-family:  glitch;
+  font-size       : 17px;
+  height          : 36px;
+  line-height     : 36px;
+  padding: 0 10px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  font-weight: bold;
+  position: left;
+  top: 0px;
+
+}
+.menu .menu-items {
+    max-height : 500px;
+    overflow-y : hidden;
+    background-color: rgba(0, 0, 0, 0.568);
+}
+
+.menu .menu-items .menu-item {
+  display         : none;
+  font-size       : 20px;
+  height          : 36px;
+  line-height     : 36px;
+  color           : rgb(255, 255, 255);
+  text-align      : left;
+  padding: 0 10px;
+  display: flex;
+  overflow-y : hidden;
+  justify-content: space-between;
+}
+
+.menu .menu-items .menu-item.selected {
+  background-color: white;
+  color :black;
+}
+
+
