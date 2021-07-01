@@ -5,7 +5,13 @@ local CurrentAction           = nil
 local CurrentActionMsg        = ''
 local CurrentActionData       = {}
 local PlayerData              = {}
-
+local plyCoords = GetEntityCoords(PlayerPedId())
+CreateThread(function()
+    while true do
+        plyCoords = GetEntityCoords(PlayerPedId())
+        Wait(2000)
+    end
+end)
 Citizen.CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -109,11 +115,11 @@ end)]]--
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(10)
-		local coords = GetEntityCoords(GetPlayerPed(-1))
+		--local coords = GetEntityCoords(GetPlayerPed(-1))
 
 		for k,v in pairs(Config.Zones) do
 			for i = 1, #v.Pos, 1 do
-				if(Config.Type ~= -1 and GetDistanceBetweenCoords(coords, v.Pos[i].x, v.Pos[i].y, v.Pos[i].z, true) < Config.DrawDistance) then
+				if(Config.Type ~= -1 and GetDistanceBetweenCoords(plyCoords, v.Pos[i].x, v.Pos[i].y, v.Pos[i].z, true) < Config.DrawDistance) then
 					DrawMarker(Config.Type, v.Pos[i].x, v.Pos[i].y, v.Pos[i].z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.Size.x, Config.Size.y, Config.Size.z, Config.Color.r, Config.Color.g, Config.Color.b, 100, false, true, 2, false, false, false, false)
 				end
 			end
@@ -125,13 +131,13 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(10)
-		local coords      = GetEntityCoords(GetPlayerPed(-1))
+		--local coords      = GetEntityCoords(GetPlayerPed(-1))
 		local isInMarker  = false
 		local currentZone = nil
 
 		for k,v in pairs(Config.Zones) do
 			for i = 1, #v.Pos, 1 do
-				if(GetDistanceBetweenCoords(coords, v.Pos[i].x, v.Pos[i].y, v.Pos[i].z, true) < Config.Size.x) then
+				if(GetDistanceBetweenCoords(plyCoords, v.Pos[i].x, v.Pos[i].y, v.Pos[i].z, true) < Config.Size.x) then
 					isInMarker  = true
 					ShopItems   = v.Items
 					currentZone = k

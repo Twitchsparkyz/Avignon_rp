@@ -1,5 +1,5 @@
 
-local _scanDelay = 0
+local _scanDelay = 500
 
 Citizen.CreateThread(function()
     while true do
@@ -8,6 +8,7 @@ Citizen.CreateThread(function()
 
         if (Global.currentInteriorId == 0) then
             Global.ResetInteriorVariables()
+            _scanDelay = 550
         else
             -- Setting variables
 

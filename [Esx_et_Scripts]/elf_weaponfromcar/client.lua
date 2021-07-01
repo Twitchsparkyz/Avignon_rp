@@ -482,20 +482,6 @@ Citizen.CreateThread(function()
 				Wait(100)
 				meleeWeaponOut = false
 			end
-			--[[
-			if IsPedModel(playerPed,1885233650) and bigWeaponOut == true then
-				if GetPedDrawableVariation(playerPed,5) ~= 45 or GetPedTextureVariation(playerPed,5) ~= 0 or GetPedPaletteVariation(playerPed,5) ~= 0 then
-					Wait(100)
-					bigWeaponOut = false
-				end
-			end
-			if IsPedModel(playerPed,-1667301416) and bigWeaponOut == true then
-				if GetPedDrawableVariation(playerPed,5) ~= 45 or GetPedTextureVariation(playerPed,5) ~= 0 or GetPedPaletteVariation(playerPed,5) ~= 0 then
-					Wait(100)
-					bigWeaponOut = false
-				end
-			end
-			]]--
 		end
 	end
 end)

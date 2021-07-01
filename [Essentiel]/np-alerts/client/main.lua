@@ -61,7 +61,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(100)
+		Citizen.Wait(200)
 
 		if NetworkIsSessionStarted() then
 			DecorRegister('isOutlaw', 3)
@@ -216,7 +216,7 @@ Citizen.CreateThread(function()
 					z = ESX.Math.Round(playerCoords.z, 1)
 				}, streetName, playerGender)
 			end
-
+		else Citizen.Wait(1500)
 		end
 	end
 end)
@@ -314,6 +314,8 @@ Citizen.CreateThread( function()
                TriggerServerEvent('TireEntenduServeur', plyPos.x, plyPos.y, plyPos.z)
                alerteEnCours = true
                print('à tiré')
+		  else
+			Citizen.Wait(500)
           end
      end
 end)
@@ -352,17 +354,21 @@ end)
 Citizen.CreateThread(function()
      while true do
           Citizen.Wait(1)
-          if IsControlJustPressed(1, 246) and alerteEnCours then
-               if PlayerData.job ~= nil and PlayerData.job.name == 'police' then
-                    TriggerServerEvent('PriseAppelServeur')
-                    AlertePrise = true
-                    TriggerEvent('TireEntenduBlips', coordsX, coordsY, coordsZ)
-                    alerteEnCours = false
-               end
-          elseif IsControlJustPressed(1, 73) and alerteEnCours then
-               AlertePrise = false
-               alerteEnCours = false
-               ESX.ShowNotification('~w~Vous avez refusé l\'appel')
-          end
+		  if alerteEnCours then
+			if IsControlJustPressed(1, 246) and alerteEnCours then
+				if PlayerData.job ~= nil and PlayerData.job.name == 'police' then
+						TriggerServerEvent('PriseAppelServeur')
+						AlertePrise = true
+						TriggerEvent('TireEntenduBlips', coordsX, coordsY, coordsZ)
+						alerteEnCours = false
+				end
+			elseif IsControlJustPressed(1, 73) and alerteEnCours then
+				AlertePrise = false
+				alerteEnCours = false
+				ESX.ShowNotification('~w~Vous avez refusé l\'appel')
+			end
+		else
+			Citizen.Wait(250)
+		end
      end
 end)

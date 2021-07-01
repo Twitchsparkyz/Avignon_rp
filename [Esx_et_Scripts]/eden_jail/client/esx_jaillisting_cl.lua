@@ -86,6 +86,8 @@ Citizen.CreateThread(function()
 		for i=1, #Config.Zones, 1 do
 			if(GetDistanceBetweenCoords(coords, Config.Zones[i].x, Config.Zones[i].y, Config.Zones[i].z, true) < Config.DrawDistance) then
 				DrawMarker(Config.MarkerType, Config.Zones[i].x, Config.Zones[i].y, Config.Zones[i].z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.ZoneSize.x, Config.ZoneSize.y, Config.ZoneSize.z, Config.MarkerColor.r, Config.MarkerColor.g, Config.MarkerColor.b, 100, false, true, 2, false, false, false, false)
+			else
+				Citizen.Wait(100)
 			end
 		end
 	end
@@ -124,6 +126,8 @@ Citizen.CreateThread(function()
 		Wait(0)
 		if IsControlJustReleased(0, Keys['E']) and isInJaillistingMarker and not menuIsShowed then
 			ShowJailListingMenu()
+		else
+			Citizen.Wait(250)
 		end
 	end
 end)

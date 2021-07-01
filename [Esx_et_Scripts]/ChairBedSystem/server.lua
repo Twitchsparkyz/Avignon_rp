@@ -36,4 +36,3 @@ AddEventHandler('ChairBedSystem:Server:Leave', function(objectcoords)
     oPlayerUse[oSource] = nil
     oArray[objectcoords] = nil
 end)
-

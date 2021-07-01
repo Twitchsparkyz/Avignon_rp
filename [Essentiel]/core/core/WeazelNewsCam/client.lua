@@ -74,6 +74,8 @@ Citizen.CreateThread(function()
 			DisableControlAction(0, 44,  true) -- INPUT_COVER
 			DisableControlAction(0,37,true) -- INPUT_SELECT_WEAPON
 			SetCurrentPedWeapon(GetPlayerPed(-1), GetHashKey("WEAPON_UNARMED"), true)
+		else
+			Citizen.Wait(500)
 		end
 	end
 end)
@@ -176,6 +178,8 @@ Citizen.CreateThread(function()
 			DestroyCam(cam1, false)
 			SetNightvision(false)
 			SetSeethrough(false)
+		else
+			Citizen.Wait(500)
 		end
 	end
 end)
@@ -271,6 +275,8 @@ Citizen.CreateThread(function()
 			DestroyCam(cam2, false)
 			SetNightvision(false)
 			SetSeethrough(false)
+		else
+			Citizen.Wait(500)
 		end
 	end
 end)
@@ -446,6 +452,8 @@ Citizen.CreateThread(function()
 				holdingBmic = false
 				usingBmic = false
 			end
+		else
+			Citizen.Wait(500)
 		end
 	end
 end)
