@@ -8,7 +8,24 @@ Citizen.CreateThread(function()
 
 end)
 
+Config = {}
 
+Config.CarLock = { 
+    ControlKey          = 303,      -- Which button for Open and Lock vehicle ? 303 = U , for other keybinds look here https://docs.fivem.net/game-references/controls/
+    NotCarFound         = "Your vehicle was not ~r~detected~w~",
+    CarLocked           = "Your vehicle is ~r~Locked~s~",
+    CarOpen             = "Your vehicle is ~g~Open~s~",
+    LimiterIsOn         = "Limiteur ~b~On",
+    LimiterIsOff        = "Limiteur ~b~Off",
+    SearchAreaRadius    = 20.0,
+    BlinkingLightsON    = true,     -- Flashing Headlights on Opening and Closing vehicle
+    CarBleepOnOpen      = true,     -- Bleep at Open vehicle
+    CarBleepOnClose     = true,     -- Bleep at Close vehicle
+    CarBleepDistance    = 5.0,      -- Radius how far the sound is audible to other players
+    CarBleepVolume      = 0.5,      -- Volume of the sound / MAX = 1.0 / MIN = 0.1
+    SpeedLimiter        = true,     -- Option to turn a speedlimiter on or off
+    SpeedLimiterKey     = 183,       -- Which button for the limiter? default: 29 = B , for other keybinds look here : https://docs.fivem.net/game-references/controls/
+}
 
 Citizen.CreateThread(function()
   local dict = "anim@mp_player_intmenu@key_fob@"
@@ -100,5 +117,42 @@ Citizen.CreateThread(function()
 			end			
 		end
 	end
+  end
+end)
+
+
+
+-- Speed Limiter Event
+Citizen.CreateThread(function()
+	--CheckESX()
+  	local resetSpeedOnEnter = true
+  	while true do
+		Citizen.Wait(0)
+		local playerPed = GetPlayerPed(-1)
+		local vehicle = GetVehiclePedIsIn(playerPed,false)
+		if Config.CarLock.SpeedLimiter then
+			if GetPedInVehicleSeat(vehicle, -1) == playerPed and IsPedInAnyVehicle(playerPed, false) then
+				
+			if resetSpeedOnEnter then
+				maxSpeed = GetVehicleHandlingFloat(vehicle,"CHandlingData","fInitialDriveMaxFlatVel")
+				SetEntityMaxSpeed(vehicle, maxSpeed)
+				resetSpeedOnEnter = false
+			end
+			-- Speed Limiter Off
+			if IsControlJustReleased(0,Config.CarLock.SpeedLimiterKey) and IsControlPressed(0,131) then
+				maxSpeed = GetVehicleHandlingFloat(vehicle,"CHandlingData","fInitialDriveMaxFlatVel")
+				SetEntityMaxSpeed(vehicle, maxSpeed)
+				ESX.ShowHelpNotification("~BLIP_12~ "..Config.CarLock.LimiterIsOff, 2000)
+			-- Speed Limiter On
+			elseif IsControlJustReleased(0,Config.CarLock.SpeedLimiterKey) then
+				cruise = GetEntitySpeed(vehicle)
+				SetEntityMaxSpeed(vehicle, cruise)
+				cruise = math.floor(cruise * 3.6 + 0.5)
+				ESX.ShowHelpNotification("~BLIP_11~ "..Config.CarLock.LimiterIsOn.." ~b~"..cruise.."~w~ km/h", 4000)
+			end
+			else
+			resetSpeedOnEnter = true
+			end
+		end
   end
 end)

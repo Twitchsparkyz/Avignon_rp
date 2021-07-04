@@ -1,6 +1,11 @@
 ESX               = nil
 
-TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+while ESX == nil do
+	TriggerEvent('esx:getSharedObject', function(obj) 
+		ESX = obj
+	end)
+end
+
 
 ESX.RegisterServerCallback('carlock:isVehicleOwner', function(source, cb, plate)
 	local identifier = GetPlayerIdentifier(source, 0)
