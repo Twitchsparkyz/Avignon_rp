@@ -35,5 +35,5 @@ client_scripts {
 
 dependencies {
 	'es_extended',
-	'esx_billing'
+	'ABase'
 }

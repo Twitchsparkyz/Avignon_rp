@@ -31,7 +31,5 @@ client_scripts {
 
 dependencies {
 	'es_extended',
-	'esx_property',
-	'esx_addonaccount',
-	'esx_society'
+	'ABase',
 }

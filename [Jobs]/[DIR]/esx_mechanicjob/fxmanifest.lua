@@ -34,6 +34,5 @@ server_scripts {
 
 dependencies {
 	'es_extended',
-	'esx_society',
-	'esx_billing'
+	'ABase'
 }
